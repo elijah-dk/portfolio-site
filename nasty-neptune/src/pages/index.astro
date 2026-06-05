@@ -1,4 +1,17 @@
 ---
+import Navigation from '../components/Navigation.astro';
+import astroLogo from '../assets/astro.svg';
+import '../styles/global.css';
+const identity = {
+  firstName: "Name",
+  state: "State",
+  hobbies: ["linux", " computer building/repair", " 3D art"],
+};
+
+const skills = ["Active directory", "Virtualization", "Troubleshooting", "Scripting", "Bash", "Powershell"];
+const skillColor = "crimson";
+const fontWeight = "bold";
+const textCase = "upperCase"
 ---
 
 <html lang="en">
@@ -9,13 +22,35 @@
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} >
     <title>Astro</title>
+    <style define:vars={{skillColor, fontWeight, textCase}}>
+        h1{
+            color: purple;
+            font-size: 4rem;
+        }
+        .skill{
+            color: var(--skillColor);
+            font-weight: var(--fontWeight);
+        }
+    </style>
   </head>
   <body>
-    <a href="/">Home</a>
-    <a href="/projects">Projects</a>
-    <a href="/contact">Contact</a>
-    <a href="/about">About</a>
+    <Navigation />
 
-    <h1>Astro</h1>
+    <h1>Welcome!</h1>
+    <p>This site was made to throughly explain my experience in a quick and concise way!</p>
+    <div>
+        <ul>
+            <li>{identity.firstName}</li>
+
+            <img src={astroLogo.src} width="115" height="48" alt="Astro Homepage" />
+            <li>{identity.state}</li>
+              {identity.hobbies.length >= 3 &&
+    <li>Three of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]} and {identity.hobbies[2]}</li>}
+        </ul>
+        <p>I'm familar with:</p>
+<ul>
+  {skills.map((skill) => <li class="skill">{skill}</li>)}
+</ul>
+    </div>
   </body>
 </html>
