@@ -1,8 +1,10 @@
 ---
-import Navigation from '../components/Navigation.astro';
+/*
 import '../styles/global.css';
+import Footer from '../components/Footer.astro'
+import Header from '../components/Header.astro';
 const pageTitle = "About";
----
+
 
 <html lang="en">
   <head>
@@ -14,7 +16,7 @@ const pageTitle = "About";
     <title>{pageTitle}</title>
   </head>
   <body>
-    <Navigation />
+    <Header />
     <h1>{pageTitle}</h1>
     <h2>Comptia A+ certified with hands on experience from personal projects. </h2> 
      <h3>This page is for getting to know about me or my projects better. </h3>
@@ -37,5 +39,38 @@ const pageTitle = "About";
         <summary>How I use AI</summary>
         <p></p>
     </details>
+    <Footer />
+       <script>
+    import "../scripts/menu.js"
+  </script>
   </body>
 </html>
+*/
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+const pageTitle = "About"
+---
+
+<BaseLayout pageTitle={pageTitle}>
+<h2>Comptia A+ certified with hands on experience from personal projects. </h2> 
+     <h3>This page is for getting to know about me or my projects better. </h3>
+ <details>
+        <summary>About this site</summary>
+        <p></p>
+    </details>
+    <details>
+        <summary>My experience with linux</summary>
+        <p>I've used linux mint exclusively for 2 years on a prebuilt gaming PC, 
+            in that time i've also ran VMs of other distrobutions such as arch, ubuntu, kali. Once I built my own custom PC, 
+            I reinstalled windows and installed arch linux as dualboot so I can have the best of both worlds
+        after that, I wanted something more practical to to use linux with, so I bought a dell optiplex PC to host my projects and more easily create labs for learning</p>
+    </details>
+       <details>
+        <summary>My philosophy on communication</summary>
+        <p></p>
+    </details>
+       <details>
+        <summary>How I use AI</summary>
+        <p></p>
+    </details>
+</BaseLayout>

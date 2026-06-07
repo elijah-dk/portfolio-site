@@ -1,0 +1,17 @@
+---
+const email = "placeholder@website.com";
+import Social from './Social.astro'
+
+---
+<style>
+  footer {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+</style>
+<footer>
+    <Social platform="LinkedIn" username="placeholder" />
+    <Social platform="github" username="placeholder"></Social>
+  <p>Contact me at: {email}</p>
+</footer>

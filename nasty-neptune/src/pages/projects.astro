@@ -1,27 +1,12 @@
 ---
-import Navigation from '../components/Navigation.astro';
-import '../styles/global.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectPost from '../components/ProjectPost.astro';
+const allPosts = Object.values(import.meta.glob('./projects/*.md', { eager: true}))
+const pageTitle = "Projects"
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="robots" content="noindex">
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} >
-    <title>projects</title>
-  </head>
-  <body>
-    <Navigation />
-    
-    <h1>Projects</h1>
-    <h2>From linux to windows, bash to powershell, hardware to networking, this is where you should be able to get a full picture of my technical knowledge</h2>
-
+<BaseLayout pageTitle={pageTitle}>
     <ul>
-        <li><a href="/projects/post-1">Post 1</a></li>
-        <li><a href="/projects/post-2">Post 2</a></li>
-        <li><a href="/projects/post-3">Post 3</a></li>
+       {allPosts.map((post: any) => <ProjectPost url={post.url} title={post.frontmatter.title} />)}
     </ul>
-  </body>
-</html>
+</BaseLayout>
